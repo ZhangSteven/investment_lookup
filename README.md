@@ -8,6 +8,13 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.12
+++++++++++
+1. id_lookup.py updated to add more mapping from portfolio id to accounting treatment in function get_portfolio_accounting_treatment()
+
+
+
+++++++++++
 ver 0.11
 ++++++++++
 1. Add more logging.
