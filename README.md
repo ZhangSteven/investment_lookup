@@ -8,6 +8,14 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.11
+++++++++++
+1. Add more logging.
+2. investmentLookup.xls updated.
+
+
+
+++++++++++
 ver 0.1
 ++++++++++
 1. Migrated from jpm's id_lookup.py module.

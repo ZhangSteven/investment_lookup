@@ -29,6 +29,9 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 
 	Returns a tuple (geneva_investment_id_for_HTM, isin, bloomberg_figi)
 	"""
+	logger.debug('get_investment_Ids(): portfolio_id={0},security_id_type={1}, security_id={2}, accounting_treatment={3}'.
+					format(portfolio_id, security_id_type, security_id, accounting_treatment))
+
 	if accounting_treatment is None:
 		accounting_treatment = get_portfolio_accounting_treatment(portfolio_id)
 
@@ -115,6 +118,9 @@ def initialize_investment_lookup(lookup_file=get_current_path()+'\\investmentLoo
 
 
 def lookup_investment_id(security_id_type, security_id):
+	logger.debug('lookup_investment_id(): security_id_type={0}, security_id={1}'.
+					format(security_id_type, security_id))
+
 	global investment_lookup
 	if len(investment_lookup) == 0:
 		initialize_investment_lookup()
@@ -129,6 +135,9 @@ def lookup_investment_id(security_id_type, security_id):
 
 
 def lookup_investment_currency(security_id_type, security_id):
+	logger.debug('lookup_investment_currency(): security_id_type={0}, security_id={1}'.
+					format(security_id_type, security_id))
+
 	global currency_lookup
 	if len(currency_lookup) == 0:
 		initialize_investment_lookup()
