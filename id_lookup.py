@@ -165,12 +165,13 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'11495':'Trading',
 
 		# China Life ListCo equity, discretionary / non-discretionary
-		'12306':'Trading',
+		'12404':'Trading',
 		'12307':'Trading',
 		'12308':'Trading',
 		'12309':'Trading',
 
 		# China Life overseas bond (HTM)
+		'12528':'HTM',
 		'12229':'HTM',
 		'12630':'HTM',
 		'12366':'HTM',
@@ -186,7 +187,7 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'21815':'Trading',
 
 		# Greenblue
-		'16000':'Trading',
+		'11602':'Trading',
 
 		# Special Event Fund
 		'16454':'Trading',
