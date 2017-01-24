@@ -8,6 +8,12 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.13
+++++++++++
+1. Updated portfolio code mapping to accounting treatment in function get_portfolio_accounting_treatment(), based on Kathleen's input for trustee equity portfolio code.
+
+
+++++++++++
 ver 0.12
 ++++++++++
 1. Updated accounting treatment mapping in get_portfolio_accounting_treatment(), added '12404', '12528'.
