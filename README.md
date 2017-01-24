@@ -8,6 +8,14 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.14
+++++++++++
+1. Bug fix: when security id is of integer form, it is read in as a float number, but we need string.
+
+2. Add one more security in the lookup table.
+
+
+++++++++++
 ver 0.13
 ++++++++++
 1. Updated portfolio code mapping to accounting treatment in function get_portfolio_accounting_treatment(), based on Kathleen's input for trustee equity portfolio code.

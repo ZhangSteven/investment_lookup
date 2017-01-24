@@ -84,7 +84,8 @@ def initialize_investment_lookup(lookup_file=get_current_path()+'\\investmentLoo
 		if security_id_type.strip() == '':
 			break
 
-		security_id = ws.cell_value(row, 1)
+		security_id = value_to_string(ws.cell_value(row, 1))
+		# print('security_id {0}, type {1}'.format(security_id, type(security_id)))
 		isin = ws.cell_value(row, 3)
 		bbg_id = ws.cell_value(row, 4)
 		investment_id = ws.cell_value(row, 5)
@@ -201,3 +202,18 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		logger.error('get_portfolio_accounting_treatment(): {0} is not a valid portfolio id'.
 						format(portfolio_id))
 		raise InvalidPortfolioId()
+
+
+
+def value_to_string(value):
+	"""
+	A security id may be in a integer form, but we need to store it as string.
+	"""
+	if isinstance(value, str):
+		return value
+	else:
+		try:
+			return str(int(value))
+		except:
+			logger.exception('value_to_string(): ')
+			raise
