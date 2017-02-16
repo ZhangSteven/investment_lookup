@@ -8,6 +8,13 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.15
+++++++++++
+1. Add support for 'Market' as a security id type. Previouly all 'Market' type security id are based on lookup, now if the security id of a 'Market' type looks like a HK equity, Geneva investment id is generated automatically.
+
+
+
+++++++++++
 ver 0.14
 ++++++++++
 1. Bug fix: when security id is of integer form, it is read in as a float number, but we need string.

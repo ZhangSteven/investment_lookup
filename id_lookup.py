@@ -17,6 +17,9 @@ class InvestmentIdNotFound(Exception):
 class InvestmentCurrencyNotFound(Exception):
 	pass
 
+class InvalidStockId(Exception):
+	pass
+
 
 
 def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_treatment=None):
@@ -27,7 +30,8 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 	2. The position's security id value
 	3. The position's accounting treatmentposition: HTM or Trading
 
-	Returns a tuple (geneva_investment_id_for_HTM, isin, bloomberg_figi)
+	Returns a tuple (geneva_investment_id, isin, bloomberg_figi), at least one
+	of the items in the tuple should be non-empty.
 	"""
 	logger.debug('get_investment_Ids(): portfolio_id={0},security_id_type={1}, security_id={2}, accounting_treatment={3}'.
 					format(portfolio_id, security_id_type, security_id, accounting_treatment))
@@ -42,6 +46,17 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 	if security_id_type == 'ISIN':
 		return get_investment_id_from_isin(accounting_treatment, security_id)
 
+	# BOC HK use 'Market' as the security id type if the bank does not know its
+	# ISIN code, then it uses the security id from its local market. For example,
+	# 4 HK Equity, it uses a market id 'HK 00004'. Another example, China
+	# interbank bond 'AGRICULTURAL BK CHINA/HK 0 22/02/17', it uses a market 
+	# id 'CN COAL7980769'.
+
+	# So here we try to detect whether the security is a stock based on the market
+	# id, if yes then return the Geneva id directly. 
+	elif security_id_type == 'Market' and security_id.startswith('HK') and len(security_id) == 8:
+		return (get_stock_investment_id(security_id), '', '')
+
 	else:
 		isin, bbg_id, geneva_investment_id_for_HTM = lookup_investment_id(security_id_type, security_id)
 		if isin != '':
@@ -51,6 +66,31 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 				return (geneva_investment_id_for_HTM, '', '')
 			else:
 				return ('', '', bbg_id)
+
+
+
+def get_stock_investment_id(security_id):
+	"""
+	When the security id looks like a stock, e.g., 'HK 00004', return its
+	Geneva investment id.
+	"""
+	tokens = security_id.split()
+	if len(tokens) != 2:
+		logger.error('get_stock_investment_id(): invalid id: {0}'.format(security_id))
+		raise InvalidStockId()
+
+	i = 0
+	for c in tokens[1]:
+		if c == '0':
+			i = i + 1
+		else:
+			break
+
+	if tokens[1][i:] == '':
+		logger.error('get_stock_investment_id(): invalid stock code: {0}'.format(tokens[1]))
+		raise InvalidStockId()
+
+	return tokens[1][i:] + ' ' + tokens[0]
 
 
 

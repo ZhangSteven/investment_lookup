@@ -10,7 +10,9 @@ from investment_lookup.id_lookup import get_investment_Ids, \
                                         initialize_investment_lookup, \
                                         lookup_investment_currency, \
                                         InvestmentCurrencyNotFound, \
-                                        InvalidAccountingTreatment
+                                        InvalidAccountingTreatment, \
+                                        get_stock_investment_id, \
+                                        InvalidStockId
 
 
 
@@ -145,6 +147,20 @@ class TestLookup(unittest2.TestCase):
         security_id = 'B1L3XL6'
         self.assertEqual(lookup_investment_currency(security_id_type, security_id),
                             'HKD')
+
+
+
+    def test_get_stock_investment_id(self):
+        self.assertEqual(get_stock_investment_id('HK 00004'), '4 HK')
+
+        with self.assertRaises(InvalidStockId):
+            get_stock_investment_id('HK 00 04')
+
+        with self.assertRaises(InvalidStockId):
+            get_stock_investment_id('HK0004')
+
+        with self.assertRaises(InvalidStockId):
+            get_stock_investment_id('HK 0000')
 
 
 
