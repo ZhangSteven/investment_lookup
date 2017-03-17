@@ -8,6 +8,13 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.16
+++++++++++
+1. Change the get_investment_id_from_isin() function, so that when the portfolio accounting treatment is 'HTM', it returns both geneva investment id (isin + 'HTM') and the ISIN code. This is because HTM portfolios can contain AFS positions, those positions' investment id is just the isin code, therefore we need to return isin code as well to match those positions. However, if a HTM portfolio contain the same bond (say isin = XS123) as both a HTM position and an AFS position, i.e., it has two positions, one is 'XS123 HTM' with no ISIN code and the other 'XS123' with ISIN code, then this approach will fail. But we haven't observed such things happening in the HTM portfolios.
+
+
+
+++++++++++
 ver 0.15
 ++++++++++
 1. Add support for 'Market' as a security id type. Previouly all 'Market' type security id are based on lookup, now if the security id of a 'Market' type looks like a HK equity, Geneva investment id is generated automatically.

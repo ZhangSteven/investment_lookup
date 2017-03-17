@@ -96,7 +96,12 @@ def get_stock_investment_id(security_id):
 
 def get_investment_id_from_isin(accounting_treatment, isin):
 	if accounting_treatment == 'HTM':
-		return (isin + ' HTM', '', '')
+		# return (isin + ' HTM', '', '')
+
+		# The change has been made because the HTM portfolios can contain
+		# AFS positions, then we use ISIN code to match those positions.
+		return (isin + ' HTM', isin, '')
+
 	else:
 		return ('', isin, '')
 
