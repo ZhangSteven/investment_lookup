@@ -239,7 +239,10 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'16454':'Trading',
 
 		# China Life Franklin Clients Account
-		'13456':'Trading'
+		'13456':'Trading',
+
+		# FFX
+		'30001':'Trading'
 	}
 	try:
 		return a_map[portfolio_id]

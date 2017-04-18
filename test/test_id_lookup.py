@@ -69,14 +69,14 @@ class TestLookup(unittest2.TestCase):
             get_investment_Ids('12548', 'ISIN', 'xyz')
 
         self.assertEqual(geneva_investment_id_for_HTM, 'xyz HTM')
-        self.assertEqual(isin, '')
+        self.assertEqual(isin, 'xyz')
         self.assertEqual(bloomberg_figi, '')
 
         geneva_investment_id_for_HTM, isin, bloomberg_figi = \
             get_investment_Ids('12548', 'CMU', 'HSBCFN13014')
 
         self.assertEqual(geneva_investment_id_for_HTM, 'HK0000163607 HTM')
-        self.assertEqual(isin, '')
+        self.assertEqual(isin, 'HK0000163607')
         self.assertEqual(bloomberg_figi, '')
 
         geneva_investment_id_for_HTM, isin, bloomberg_figi = \
@@ -113,14 +113,14 @@ class TestLookup(unittest2.TestCase):
             get_investment_Ids('19437', 'ISIN', 'xyz', 'HTM')
 
         self.assertEqual(geneva_investment_id_for_HTM, 'xyz HTM')
-        self.assertEqual(isin, '')
+        self.assertEqual(isin, 'xyz')
         self.assertEqual(bloomberg_figi, '')
 
         geneva_investment_id_for_HTM, isin, bloomberg_figi = \
             get_investment_Ids('19437', 'CMU', 'HSBCFN13014', 'HTM')
 
         self.assertEqual(geneva_investment_id_for_HTM, 'HK0000163607 HTM')
-        self.assertEqual(isin, '')
+        self.assertEqual(isin, 'HK0000163607')
         self.assertEqual(bloomberg_figi, '')
 
         geneva_investment_id_for_HTM, isin, bloomberg_figi = \

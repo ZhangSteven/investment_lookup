@@ -10,7 +10,18 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 ++++++++++
 ver 0.16
 ++++++++++
+1. Fixed the test case failures caused by the last update.
+
+2. Updated investLookup.xls for an additional entry.
+
+
+
+++++++++++
+temporary change
+++++++++++
 1. Change the get_investment_id_from_isin() function, so that when the portfolio accounting treatment is 'HTM', it returns both geneva investment id (isin + 'HTM') and the ISIN code. This is because HTM portfolios can contain AFS positions, those positions' investment id is just the isin code, therefore we need to return isin code as well to match those positions. However, if a HTM portfolio contain the same bond (say isin = XS123) as both a HTM position and an AFS position, i.e., it has two positions, one is 'XS123 HTM' with no ISIN code and the other 'XS123' with ISIN code, then this approach will fail. But we haven't observed such things happening in the HTM portfolios.
+
+2. For DIF fund, the same bond can appear in both the HTM and AFS section, but there are two position files for DIF, one for HTM position and one for AFS position, so the above approach won't break DIF reconciliation.
 
 
 
