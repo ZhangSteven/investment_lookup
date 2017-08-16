@@ -1,7 +1,9 @@
 # coding=utf-8
 # 
 from xlrd import open_workbook
-from investment_lookup.utility import logger, get_current_path
+from investment_lookup.utility import get_current_path
+import logging
+logger = logging.getLogger(__name__)
 
 
 

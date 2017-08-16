@@ -8,6 +8,14 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.17@2017-08-16
+++++++++++
+1. The id_lookup module now uses standard logging, get logger via:
+
+	logger = logging.getLogger(__name__)
+
+
+++++++++++
 ver 0.16
 ++++++++++
 1. Fixed the test case failures caused by the last update.
