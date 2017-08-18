@@ -215,8 +215,8 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		# China Life ListCo equity, discretionary / non-discretionary
 		'12404':'Trading',
 		'12307':'Trading',
-		'12308':'Trading',
-		'12309':'Trading',
+		'12086':'Trading',
+		'12094':'HTM',
 
 		# China Life overseas bond (HTM)
 		'12528':'HTM',

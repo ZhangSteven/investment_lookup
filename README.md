@@ -8,6 +8,14 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.18@2017-08-18
+++++++++++
+1. changed portfolio id for china life overseas passive accounts.
+2. changed portfolio accounting treatment to HTM for 12094, so that it can return the geneva investment id for the portfolio's only position, the private equity holding.
+
+
+
+++++++++++
 ver 0.17@2017-08-16
 ++++++++++
 1. The id_lookup module now uses standard logging, get logger via:
