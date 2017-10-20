@@ -7,6 +7,14 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 
+
+++++++++++
+ver 0.19@2017-10-20
+++++++++++
+1. changed get_portfolio_accounting_treatment() to add in house fund portfolio id.
+
+
+
 ++++++++++
 ver 0.18@2017-08-18
 ++++++++++

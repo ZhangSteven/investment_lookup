@@ -244,7 +244,10 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'13456':'Trading',
 
 		# FFX
-		'30001':'Trading'
+		'30001':'Trading',
+
+		# in house fund
+		'20051':'Trading'
 	}
 	try:
 		return a_map[portfolio_id]
