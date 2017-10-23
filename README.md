@@ -7,6 +7,12 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 
+++++++++++
+ver 0.1901@2017-10-23
+++++++++++
+1. changed get_portfolio_accounting_treatment() to make accounting treatment for in house fund "HTM" (previously it was "trading").
+
+
 
 ++++++++++
 ver 0.19@2017-10-20
