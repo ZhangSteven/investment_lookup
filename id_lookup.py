@@ -247,7 +247,10 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'30001':'Trading',
 
 		# in house fund
-		'20051':'HTM'
+		'20051':'HTM',
+
+		# the new China Life Macau fund
+		'99999':'HTM'
 	}
 	try:
 		return a_map[portfolio_id]
