@@ -250,7 +250,10 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'20051':'HTM',
 
 		# the new China Life Macau fund
-		'99999':'HTM'
+		'99999':'HTM',
+
+		# ListCo Equity SCYF
+		'12087':'Trading'
 	}
 	try:
 		return a_map[portfolio_id]
