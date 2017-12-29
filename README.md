@@ -8,6 +8,13 @@ ISIN code, etc. Based on one ID we need to lookup other IDs. Also, based on the 
 
 
 ++++++++++
+ver 0.2@2017-12-29
+++++++++++
+1. Changed get_investment_Ids() function in id_lookup.py, remove the condition to check the length of the security id, when the security id type is "Market" and starts with "HK". Because previously those security ID always has length 8, such as "HK 00700", "HK 03480", but then "HK 2025" appears. So this checking is removed.
+
+
+
+++++++++++
 ver 0.1901@2017-10-23
 ++++++++++
 1. changed get_portfolio_accounting_treatment() to make accounting treatment for in house fund "HTM" (previously it was "trading").

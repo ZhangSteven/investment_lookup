@@ -56,7 +56,8 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 
 	# So here we try to detect whether the security is a stock based on the market
 	# id, if yes then return the Geneva id directly. 
-	elif security_id_type == 'Market' and security_id.startswith('HK') and len(security_id) == 8:
+	# elif security_id_type == 'Market' and security_id.startswith('HK') and len(security_id) == 8:
+	elif security_id_type == 'Market' and security_id.startswith('HK'):
 		return (get_stock_investment_id(security_id), '', '')
 
 	else:
