@@ -224,7 +224,11 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'12229':'HTM',
 		'12630':'HTM',
 		'12366':'HTM',
-		'12548':'HTM',
+
+		'12548':'HTM',	# portfolio closed, but kept here so that
+						# past testing code does not break
+		
+		'12549':'HTM',
 		'12732':'HTM',
 		'12733':'HTM',
 		'12734':'HTM',
