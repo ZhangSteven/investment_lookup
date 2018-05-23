@@ -258,7 +258,10 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'99999':'HTM',
 
 		# ListCo Equity SCYF
-		'12087':'Trading'
+		'12087':'Trading',
+
+		# JIC International
+		'40002': 'Trading'
 	}
 	try:
 		return a_map[portfolio_id]
