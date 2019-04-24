@@ -12,7 +12,8 @@ from investment_lookup.id_lookup import get_investment_Ids, \
                                         InvestmentCurrencyNotFound, \
                                         InvalidAccountingTreatment, \
                                         get_stock_investment_id, \
-                                        InvalidStockId
+                                        InvalidStockId, \
+                                        read_40002_htm_list
 
 
 
@@ -161,6 +162,15 @@ class TestLookup(unittest2.TestCase):
 
         with self.assertRaises(InvalidStockId):
             get_stock_investment_id('HK 0000')
+
+
+
+    def test_read_40002_htm_list(self):
+        htm_file = get_current_path() + '\\samples\\sample 40002 htm.xlsx'
+        htm_bonds = read_40002_htm_list(htm_file)
+        self.assertEqual(5, len(htm_bonds))
+        self.assertEqual('XS1215617272', htm_bonds[0])
+        self.assertEqual('XS1241497384', htm_bonds[4])
 
 
 

@@ -54,3 +54,13 @@ def get_base_directory():
 		directory = get_current_path()
 
 	return directory
+
+
+
+def get_40002_htm_file():
+	global config
+	directory = config['input']['directory']
+	if directory == '':
+		directory = get_current_path()
+
+	return os.path.join(directory, config['input']['40002_file'])

@@ -1,7 +1,7 @@
 # coding=utf-8
 # 
 from xlrd import open_workbook
-from investment_lookup.utility import get_current_path
+from investment_lookup.utility import get_current_path, get_40002_htm_file
 import logging
 logger = logging.getLogger(__name__)
 
@@ -38,8 +38,16 @@ def get_investment_Ids(portfolio_id, security_id_type, security_id, accounting_t
 	logger.debug('get_investment_Ids(): portfolio_id={0},security_id_type={1}, security_id={2}, accounting_treatment={3}'.
 					format(portfolio_id, security_id_type, security_id, accounting_treatment))
 
-	if accounting_treatment is None:
+	# if accounting_treatment is None:
+	# 	accounting_treatment = get_portfolio_accounting_treatment(portfolio_id)
+
+	# 40002 JIC International has mixed HTM with Trading positions
+	if portfolio_id == '40002':
+		accounting_treatment = get_40002_accounting_treatment(security_id_type, security_id)
+
+	elif accounting_treatment is None:
 		accounting_treatment = get_portfolio_accounting_treatment(portfolio_id)
+
 
 	if not accounting_treatment in ['HTM', 'Trading']:
 		logger.error('get_investment_Ids(): invalid accounting treatment:{0}'.format(accounting_treatment))
@@ -284,3 +292,46 @@ def value_to_string(value):
 		except:
 			logger.exception('value_to_string(): ')
 			raise
+
+
+
+def read_40002_htm_list(filename = get_40002_htm_file()):
+	"""
+	[String] filename => [List] htm bond ISIN codes
+	"""
+	logger.debug('read_40002_htm_list(): on file {0}'.format(filename))
+
+	wb = open_workbook(filename=filename)
+	ws = wb.sheet_by_name('Sheet1')
+	row = 1
+	htm_bonds = []
+	while (row < ws.nrows):
+		isin = ws.cell_value(row, 0).strip()
+		if isin == '':
+			break
+
+		htm_bonds.append(isin)
+		row = row + 1
+	# end of while loop 
+
+	return htm_bonds
+
+
+
+def get_40002_accounting_treatment(security_id_type, security_id):
+	"""
+	[String] security_id_type, [String] security_id => 
+		[String] accounting_treatment
+
+	40002 JIC International has mixed HTM and Trading positions, so we'll
+	lookup a file to determine which position is HTM.
+	"""
+	if security_id_type == 'ISIN' and \
+		security_id in get_40002_accounting_treatment.htm_bonds:
+		return 'HTM'
+	
+	else:
+		return 'Trading'
+
+# initialize the function local static variable
+get_40002_accounting_treatment.htm_bonds = read_40002_htm_list()

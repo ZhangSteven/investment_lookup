@@ -3,3 +3,10 @@ __pycache__/
 
 # ignore the log file
 lookup.log
+
+# ignore the config file (production config is different)
+lookup.config
+
+# ignore the 40002 htm file (production environment, the file is located elsewhere)
+40002 JIC International HTM Bonds.xlsx
+
