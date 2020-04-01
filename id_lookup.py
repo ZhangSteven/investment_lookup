@@ -222,6 +222,8 @@ def get_portfolio_accounting_treatment(portfolio_id):
 		'12726':'Trading',
 
 		# China Life ListCo equity, discretionary / non-discretionary
+		'12402':'Trading',
+		'12403':'Trading',
 		'12404':'Trading',
 		'12307':'Trading',
 		'12086':'Trading',
