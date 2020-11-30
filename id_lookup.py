@@ -120,7 +120,7 @@ def get_investment_id_from_isin(accounting_treatment, isin):
 
 investment_lookup = {}
 currency_lookup = {}
-def initialize_investment_lookup(lookup_file=get_current_path()+'\\investmentLookup.xls'):
+def initialize_investment_lookup(lookup_file=get_current_path()+'\\investmentLookup.xlsx'):
 	"""
 	Initialize the lookup table from a file, for those securities that
 	do have an isin code.
