@@ -215,6 +215,7 @@ def get_portfolio_accounting_treatment(portfolio_id):
 	a_map = {
 		# China Life overseas equity, discretionary / non-discretionary
 		'11490':'Trading',
+		'11500':'Trading',
 		'12341':'Trading',
 		'12298':'Trading',
 		'12857':'Trading',
